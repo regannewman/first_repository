@@ -3,5 +3,7 @@ Console.WriteLine("Hello, World! lol");
 var list01 = new List<int>();
 for(int i = 0; i<10; i++)
     {
-        Console.WriteLine(i+1);
+        if(i%2 == 1){
+            Console.WriteLine(i);
+        }
     }
