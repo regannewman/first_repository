@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MyNamespace
 {
@@ -9,37 +10,26 @@ namespace MyNamespace
     {
         static void Main(string[] args)
         {
-            string[] list_of_things = {"pineapple", "orange", "carrot", "banana", "broccoli", "lettuce", "mango"};
-            string[] list_of_fruit = {"apple", "grape", "orange", "pineapple", "tomato", "banana", "mango", "lime"};
-            string[] list_of_veg = {"carrot", "potato", "broccoli", "lettuce", "squash"};
-
-            List<string> fruits = new List<string>();
-            List<string> veg = new List<string>();
-
-            foreach(string item in list_of_things)
+            Dictionary<int, string> kvp = new Dictionary<int, string>()
             {
-                if(list_of_fruit.Contains(item.ToLower()))
-                {
-                    fruits.Add(item);
-                }
-                else if(list_of_veg.Contains(item.ToLower()))
-                {
-                    veg.Add(item);
-                }else
-                {
-                    Console.WriteLine("This item is not a fruit or veggie, please try again!");
-                }
-            }
+                {0, "zero"},
+                {1, "one"},
+                {2, "two"},
+                {3, "three"},
+                {4, "four"},
+                {5, "five"}
+            };
 
-            Console.WriteLine("Here are the fruits: " );
-            foreach(string fruit in fruits)
-            {
-                Console.WriteLine(fruit);
-            }
+            var list_of_even = kvp.Where(x => x.Key%2 == 0).ToList();
+            var list_of_odd = kvp.Where(y => y.Key%2 == 1).ToList();
 
-            Console.WriteLine("Here are the veg: " );
-            veg.ForEach(veggie => Console.WriteLine(veggie));
-            
+            list_of_even.ForEach(even => Console.WriteLine($"{even.Key} : {even.Value}"));
+            list_of_odd.ForEach(odd => Console.WriteLine($"{odd.Key} : {odd.Value}"));
+
+
+            // create a list for each odd and even number
+
+            // print out the key and value like this - 0 : "zero"
 
         }
     }
